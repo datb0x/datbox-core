@@ -2,10 +2,12 @@ module codeberg.org/datbox/datbox-core
 
 go 1.27.0
 
-require charm.land/log/v2 v2.0.1
+require (
+	charm.land/lipgloss/v2 v2.0.5
+	charm.land/log/v2 v2.0.1
+)
 
 require (
-	charm.land/lipgloss/v2 v2.0.5 // indirect
 	github.com/charmbracelet/colorprofile v0.4.3 // indirect
 	github.com/charmbracelet/ultraviolet v0.0.0-20251205161215-1948445e3318 // indirect
 	github.com/charmbracelet/x/ansi v0.11.7 // indirect
