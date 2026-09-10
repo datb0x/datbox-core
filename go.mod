@@ -1,4 +1,4 @@
-module codeberg.org/datbox/datbox-core
+module github.com/datb0x/datbox-core
 
 go 1.27.0
 
