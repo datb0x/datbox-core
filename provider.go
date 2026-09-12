@@ -5,6 +5,13 @@ import (
 	"io/fs"
 )
 
+type Progress struct {
+	CurrentBytes  int64
+	TotalBytes    int64
+	CurrentChunks int
+	TotalChunks   int
+}
+
 type ProviderInfo struct {
 	Root        string // Root path of the file system of this provider
 	Encrypted   bool   // Whether the provider is encrypting uploaded files
@@ -13,8 +20,8 @@ type ProviderInfo struct {
 }
 
 type Provider interface {
-	Get(path string, writer io.WriteCloser) error            // Get a file at the path and write to the writer
-	Put(path string, size int64, reader io.ReadCloser) error // Put a file to the path using the reader
+	Get(path string, writer io.WriteCloser, progressCallback func(progress Progress)) error            // Get a file at the path and write to the writer
+	Put(path string, size int64, reader io.ReadCloser, progressCallback func(progress Progress)) error // Put a file to the path using the reader
 
 	List(path string) ([]fs.DirEntry, error)          // List files under a directory
 	Move(src, dst string) error                       // Move file from src to dst
