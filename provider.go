@@ -3,9 +3,11 @@ package datboxcore
 import (
 	"io"
 	"io/fs"
+	"time"
 )
 
 type Progress struct {
+	StartTime     time.Time
 	CurrentBytes  int64
 	TotalBytes    int64
 	CurrentChunks int
